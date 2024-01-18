@@ -5,7 +5,7 @@ class Person:
       self.name = name
       self.email = email
       self.phone = phone
-      self.firends = []
+      self.friends = []
 
     def greet(self, other_person):
       print('Hello %s, I am %s!' % (other_person.name, self.name))
@@ -19,7 +19,6 @@ class Person:
 sonny = Person(name = 'Sonny', email = 'sonny@hotmail.com', phone = "483-485-4948")
 
 jordan = Person(name = 'Jordan', email = 'jordan@aol.com', phone = '495-586-3456')
-#this is calling the greet function for sonny using jordan as the other person
 
 # Add friends
 jordan.friends.append(sonny)
@@ -33,6 +32,7 @@ print(f"{jordan.name} has {num_friends_jordan} friend(s).")  # Output: Jordan ha
 print(f"{sonny.name} has {num_friends_sonny} friend(s).")    # Output: Sonny has 1 friend(s).
 
 
+#this is calling the greet function for sonny using jordan as the other person
 sonny.greet(jordan)
 
 jordan.greet(sonny)
