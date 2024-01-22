@@ -23,7 +23,11 @@ class Character:
         print("You did literally nothing, it's a zombie")
 
     def attack_vader(self, enemy):
-        print("{}'s webs did absolutely nothing and he was lightsabered in half" .format(hero.name))
+        print("{}'s webs did nothing and he was lightsabered in half" .format(hero.name))
+
+#==================================================================================
+
+#Where I was gonna put the store class
 
 #==================================================================================
 
@@ -44,7 +48,7 @@ class Hero(Character):
         enemy.health -= self.power
         print("{} does {} damage to the {}.".format(hero.name, self.power, type(enemy).__name__))
         if enemy.health <= 0:
-            print("The {} is dead.".format(goblin.name))
+            print("The {} is dead.".format(enemy.name))
 
     def buy(self, item_cost):
         if self.coins >= item_cost:
@@ -97,11 +101,27 @@ class Darth_Vader(Character):
 
 #==================================================================================
 
+class Red_Skull(Character):
+    def __init__(self, name, health, power, bounty):
+        self.name = name
+        self.health = health
+        self.power = power
+        self.bounty = bounty
+
+    def attack(self, enemy):
+        enemy.health -= self.power
+        print("The {} does {} damage to you.".format(red_skull.name, self.power))
+        if enemy.health <= 0:
+            print("You are dead.")
+
+#==================================================================================
+
 zombie = Zombie("The Zombie", 0, 0, 7)
 shadow = Shadow("Shadow", 1, 0, 6)
 hero = Hero("Spider-Man", 10, 5, 20)
 goblin = Goblin("Green Goblin", 6, 2, 5)
 vader = Darth_Vader("Darth Vader", 100, 100, 1000000)
+red_skull = Red_Skull("Red Skull", 15, 0, 20)
 
 #==================================================================================
 
@@ -118,9 +138,10 @@ def main():
         print("1. Go Web Go")
         print("2. do nothing")
         print("3. Attack Shadow")
-        print("4. Whack Zombie")
-        print("5. Attack Darth Vader")
-        print("6. flee")
+        print("4. Punch Red Skull")
+        print("5. Whack Zombie")
+        print("6. Attack Darth Vader")
+        print("7. flee")
         print("> ", end="")
         user_input = input()
         if user_input == "1":
@@ -135,12 +156,14 @@ def main():
             hero.shadow_block(shadow)
             pass
         elif user_input == "4":
+            hero.attack(red_skull)
+        elif user_input == "5":
             hero.whack_zom(zombie)
             pass
-        elif user_input == "5":
+        elif user_input == "6":
             hero.attack_vader(vader)
             break
-        elif user_input == "6":
+        elif user_input == "7":
             print("With great power comes great responsibility")
             break
         else:
